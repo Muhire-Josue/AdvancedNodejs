@@ -15,7 +15,7 @@ export default class BlogController {
   }
 
   static async getBlogById(req, res) {
-    const { id } = req.query;
+    const { id } = req.params;
     const blog = await findBlogById(id);
     if (!blog) {
       return res.status(404).json({ error: 'Blog not found' });
