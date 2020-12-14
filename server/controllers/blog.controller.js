@@ -6,7 +6,7 @@ export default class BlogController {
   static async saveBlog(req, res) {
     try {
       const blog = req.body;
-      blog.userId = req.userId;
+      blog.userId = req.user.id;
       const data = await save(blog);
       return res.status(201).json({ data });
     } catch (error) {
