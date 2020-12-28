@@ -10,6 +10,7 @@ export default class BlogController {
       const data = await save(blog);
       return res.status(201).json({ data });
     } catch (error) {
+      console.error(error);
       return res.status(500).json({ error });
     }
   }
@@ -24,7 +25,8 @@ export default class BlogController {
   }
 
   static async getAllBlog(req, res) {
-    const blogs = await findAllBlog();
+    const userId = req.user.id;
+    const blogs = await findAllBlog(userId);
     return res.json({ data: blogs });
   }
 }

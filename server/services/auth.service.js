@@ -12,7 +12,7 @@ export default class AuthService {
    *@returns {object} it returns the created user
    */
   static async save(user) {
-    const createdUser = User.create(user);
+    const createdUser = await User.create(user);
     return createdUser;
   }
 

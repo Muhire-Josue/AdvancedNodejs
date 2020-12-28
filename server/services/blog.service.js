@@ -1,5 +1,5 @@
 /* eslint-disable require-jsdoc */
-import models from '../database/models/blog';
+import models from '../database/models/index';
 
 const { Blog } = models;
 /**
@@ -12,12 +12,12 @@ export default class BlogService {
   }
 
   static async findBlogById(id) {
-    const blog = await Blog.findOne({ id });
+    const blog = await Blog.findOne({ where: { id } });
     return blog;
   }
 
-  static async findAllBlog() {
-    const blogs = await Blog.findAll();
+  static async findAllBlog(userId) {
+    const blogs = await Blog.findAll({ where: { userId } });
     return blogs;
   }
 }

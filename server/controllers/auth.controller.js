@@ -1,5 +1,5 @@
 import AuthService from '../services/auth.service';
-import { encryptPassword, checkPassowrds } from '../utils/bcrypt.util';
+import { encryptPassword, checkPassword } from '../utils/bcrypt.util';
 import { encodeJwt } from '../utils/jwt.util';
 
 const { save, findUserByEmail } = AuthService;
@@ -34,8 +34,8 @@ export default class AuthController {
     if (!user) {
       return res.status(400).json({ error: 'Authentication failed' });
     }
-    const hashedPassword = user.dataValues;
-    if (checkPassowrds(password, hashedPassword)) {
+    const hashedPassword = user.dataValues.password;
+    if (!checkPassword(password, hashedPassword)) {
       return res.status(400).json({ error: 'Authentication failed' });
     }
     const { name, email: userEmail, id } = user.dataValues;

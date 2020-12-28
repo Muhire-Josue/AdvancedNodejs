@@ -7,4 +7,4 @@ const app = express.Router();
 app.use(welcomeRoute);
 app.use(allRoutes);
 
-export default welcomeRoute;
+export default app;

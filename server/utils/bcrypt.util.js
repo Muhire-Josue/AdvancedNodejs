@@ -14,4 +14,4 @@ export const encryptPassword = (plainTextPassword) => bcrypt.hashSync(plainTextP
  * @returns {boolean} it returns true if the plain password is equivalent to the hashed password
  */
 
-export const checkPassowrds = (plainTextPassword, encryptedPassword) => bcrypt.compareSync(plainTextPassword, encryptedPassword);
+export const checkPassword = (plainTextPassword, encryptedPassword) => bcrypt.compareSync(plainTextPassword, encryptedPassword);
